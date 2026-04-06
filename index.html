@@ -3,226 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEGEND STORE | عالم الشحن والحسابات</title>
+    <title>KARLO STORE | عالم الشحن</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-neon: #00d2ff;
-            --secondary-neon: #9d50bb;
-            --bg-dark: #05070a;
-            --card-bg: #0f121a;
-            --text-color: #e2e8f0;
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-color);
-            margin: 0;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: -10%; left: -10%;
-            width: 40%; height: 40%;
-            background: radial-gradient(circle, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
-            z-index: -1;
-        }
-
-        header {
-            background: linear-gradient(90deg, #0f121a, #1a1f2e);
-            padding: 20px;
-            text-align: center;
-            border-bottom: 2px solid var(--primary-neon);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
-        }
-
-        .logo { font-size: 28px; font-weight: 900; letter-spacing: 2px; color: #fff; text-shadow: 0 0 10px var(--primary-neon); }
-
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            background: #111;
-            padding: 10px;
-            gap: 10px;
-            overflow-x: auto;
-        }
-
-        .tab-btn {
-            background: none;
-            border: 1px solid #333;
-            color: #ccc;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-family: 'Cairo';
-            white-space: nowrap;
-            transition: 0.3s;
-        }
-
-        .tab-btn.active {
-            background: var(--primary-neon);
-            color: #000;
-            font-weight: bold;
-            box-shadow: 0 0 15px var(--primary-neon);
-        }
-
+        :root { --primary: #00d2ff; --secondary: #9d50bb; --bg: #05070a; --card: #0f121a; }
+        body { font-family: 'Cairo', sans-serif; background: var(--bg); color: #e2e8f0; margin: 0; }
+        header { background: #0f121a; padding: 25px; text-align: center; border-bottom: 2px solid var(--primary); box-shadow: 0 0 20px rgba(0, 210, 255, 0.3); }
+        .logo { font-size: 32px; font-weight: 900; color: #fff; text-shadow: 0 0 15px var(--primary); }
+        .nav-tabs { display: flex; justify-content: center; background: #111; padding: 10px; gap: 10px; }
+        .tab-btn { background: none; border: 1px solid #333; color: #ccc; padding: 10px 20px; cursor: pointer; border-radius: 5px; font-family: 'Cairo'; }
+        .tab-btn.active { background: var(--primary); color: #000; font-weight: bold; }
         .container { max-width: 1000px; margin: auto; padding: 20px; }
-
-        .section { display: none; animation: fadeIn 0.5s ease; }
-        .section.active { display: block; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .card {
-            background: var(--card-bg);
-            border: 1px solid #222;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            transition: 0.3s;
-            position: relative;
-        }
-        .card:hover { border-color: var(--secondary-neon); transform: scale(1.02); box-shadow: 0 0 20px rgba(157, 80, 187, 0.2); }
-
-        .price-tag { font-size: 22px; color: var(--primary-neon); font-weight: bold; display: block; margin: 15px 0; }
-
-        .btn-buy {
-            background: linear-gradient(45deg, var(--primary-neon), var(--secondary-neon));
-            color: white; border: none; padding: 12px 25px; border-radius: 8px; width: 100%;
-            font-weight: bold; cursor: pointer; font-family: 'Cairo';
-        }
-
-        .account-form { background: #161b22; padding: 25px; border-radius: 15px; border: 1px dashed var(--secondary-neon); margin-bottom: 30px; }
-        input, select, textarea {
-            width: 100%; padding: 12px; margin: 10px 0; background: #0d1117; border: 1px solid #30363d;
-            color: white; border-radius: 8px; font-family: 'Cairo'; box-sizing: border-box;
-        }
-
-        .payment-methods { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-        .pay-card { background: #111; padding: 15px; border-radius: 10px; border: 1px solid #333; width: 120px; text-align: center; }
-
-        .wa-float {
-            position: fixed; bottom: 20px; left: 20px;
-            background: #25d366; width: 60px; height: 60px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); z-index: 1000;
-        }
-
-        .acc-id-badge {
-            position: absolute; top: 10px; right: 10px;
-            background: rgba(0,0,0,0.7); padding: 2px 10px;
-            border-radius: 5px; font-size: 12px; color: var(--primary-neon);
-            border: 1px solid var(--primary-neon);
-        }
+        .section { display: none; } .section.active { display: block; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .card { background: var(--card); border: 1px solid #222; border-radius: 15px; padding: 20px; text-align: center; }
+        .price-tag { font-size: 22px; color: var(--primary); font-weight: bold; display: block; margin: 15px 0; }
+        .btn-buy { background: linear-gradient(45deg, var(--primary), var(--secondary)); color: white; border: none; padding: 12px 25px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; font-family: 'Cairo'; }
+        .wa-float { position: fixed; bottom: 20px; left: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">LEGEND STORE</div>
-</header>
+<header><div class="logo">KARLO STORE</div></header>
 
 <div class="nav-tabs">
     <button class="tab-btn active" onclick="openTab(event, 'home')">🏠 الرئيسية</button>
     <button class="tab-btn" onclick="openTab(event, 'recharge')">💎 شحن الألعاب</button>
-    <button class="tab-btn" onclick="openTab(event, 'accounts')">🎮 سوق الحسابات</button>
     <button class="tab-btn" onclick="openTab(event, 'payment')">💳 طرق الدفع</button>
 </div>
 
 <div class="container">
-
     <div id="home" class="section active">
-        <div style="text-align: center; padding: 40px 0;">
-            <h1 style="font-size: 35px;">مرحباً بك في <span style="color: var(--primary-neon);">ليجند ستور</span></h1>
-            <p>أسرع خدمة شحن في ليبيا وأضمن وسيط لبيع الحسابات.</p>
-            <button class="btn-buy" style="width: auto;" onclick="document.querySelectorAll('.tab-btn')[1].click()">ابدأ التسوق الآن</button>
+        <div style="text-align: center; padding: 50px 0;">
+            <h1>مرحباً بك في <span style="color: var(--primary);">كارلو ستور</span></h1>
+            <p>أسرع خدمة شحن ألعاب في ليبيا 🇱🇾</p>
+            <button class="btn-buy" style="width: auto;" onclick="document.querySelectorAll('.tab-btn')[1].click()">ابدأ الشحن الآن 🚀</button>
         </div>
     </div>
 
     <div id="recharge" class="section">
-        <h2 style="border-right: 4px solid var(--primary-neon); padding-right: 15px;">باقات شحن الألعاب</h2>
-        
-        <h3>🔥 فري فاير (بونص إضافي)</h3>
+        <h2>باقات الشحن المتوفرة</h2>
+        <h3>🔥 فري فاير</h3>
         <div class="grid">
-            <div class="card"><span>110 💎</span> <span class="price-tag">12.5 د.ل</span> <button class="btn-buy" onclick="sendOrder('فري فاير', '110 جوهرة', '12.5')">اطلب الآن</button></div>
-            <div class="card"><span>231 💎</span> <span class="price-tag">26 د.ل</span> <button class="btn-buy" onclick="sendOrder('فري فاير', '231 جوهرة', '26')">اطلب الآن</button></div>
-            <div class="card"><span>583 💎</span> <span class="price-tag">61 د.ل</span> <button class="btn-buy" onclick="sendOrder('فري فاير', '583 جوهرة', '61')">اطلب الآن</button></div>
-            <div class="card"><span>1188 💎</span> <span class="price-tag">124 د.ل</span> <button class="btn-buy" onclick="sendOrder('فري فاير', '1188 جوهرة', '124')">اطلب الآن</button></div>
+            <div class="card"><span>110 💎</span> <span class="price-tag">12.5 د.ل</span> <button class="btn-buy" onclick="sendOrder('فري فاير', '110 جوهرة', '12.5')">شحن سريع ⚡</button></div>
+            <div class="card"><span>231 💎</span> <span class="price-tag">26 د.ل</span> <button class="btn-buy" onclick="sendOrder('فري فاير', '231 جوهرة', '26')">شحن سريع ⚡</button></div>
+            <div class="card"><span>583 💎</span> <span class="price-tag">61 د.ل</span> <button class="btn-buy" onclick="sendOrder('فري فاير', '583 جوهرة', '61')">شحن سريع ⚡</button></div>
+            <div class="card"><span>1188 💎</span> <span class="price-tag">124 د.ل</span> <button class="btn-buy" onclick="sendOrder('فري فاير', '1188 جوهرة', '124')">شحن سريع ⚡</button></div>
         </div>
-
-        <h3 style="margin-top: 40px;">🔫 ببجي موبايل (عالمي)</h3>
+        <h3 style="margin-top: 30px;">🔫 ببجي موبايل</h3>
         <div class="grid">
-            <div class="card"><span>60 UC</span> <span class="price-tag">13 د.ل</span> <button class="btn-buy" onclick="sendOrder('ببجي', '60 شدة', '13')">اطلب الآن</button></div>
-            <div class="card"><span>325 UC</span> <span class="price-tag">64 د.ل</span> <button class="btn-buy" onclick="sendOrder('ببجي', '325 شدة', '64')">اطلب الآن</button></div>
-            <div class="card"><span>660 UC</span> <span class="price-tag">125 د.ل</span> <button class="btn-buy" onclick="sendOrder('ببجي', '660 شدة', '125')">اطلب الآن</button></div>
-            <div class="card"><span>1800 UC</span> <span class="price-tag">315 د.ل</span> <button class="btn-buy" onclick="sendOrder('ببجي', '1800 شدة', '315')">اطلب الآن</button></div>
-            <div class="card"><span>3850 UC</span> <span class="price-tag">623 د.ل</span> <button class="btn-buy" onclick="sendOrder('ببجي', '3850 شدة', '623')">اطلب الآن</button></div>
-            <div class="card"><span>8100 UC</span> <span class="price-tag">1253 د.ل</span> <button class="btn-buy" onclick="sendOrder('ببجي', '8100 شدة', '1253')">اطلب الآن</button></div>
-        </div>
-    </div>
-
-    <div id="accounts" class="section">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h2 style="border-right: 4px solid var(--secondary-neon); padding-right: 15px; margin: 0;">الحسابات المتوفرة</h2>
-            <button class="tab-btn" onclick="document.getElementById('upload-form').style.display='block'" style="border-color: var(--secondary-neon); color: var(--secondary-neon);">➕ اعرض حسابك للبيع</button>
-        </div>
-
-        <div id="upload-form" class="account-form" style="display:none;">
-            <span style="float: left; cursor: pointer;" onclick="this.parentElement.style.display='none'">❌ إغلاق</span>
-            <h3>عرض حساب جديد للبيع</h3>
-            <p style="font-size: 13px; color: #888;">أدخل تفاصيل حسابك وسيتم التواصل معك لعرضه في المتجر.</p>
-            <input type="text" id="accGame" placeholder="اسم اللعبة (ببجي، فري فاير...)">
-            <input type="text" id="accLevel" placeholder="المستوى (Level)">
-            <input type="text" id="accPrice" placeholder="السعر المطلوب">
-            <textarea id="accDetails" rows="3" placeholder="وصف الحساب (سكنات، أسلحة، نوادر...)"></textarea>
-            <button class="btn-buy" onclick="submitAccount()">إرسال الطلب للإدارة ✅</button>
-        </div>
-
-        <div class="grid">
-            <div class="card">
-                <div class="acc-id-badge">ID: #1001</div>
-                <div style="background: #1a1f2e; height: 160px; border-radius: 10px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
-                    <img src="https://img.icons8.com/fluency/96/shield.png" style="width: 60px; opacity: 0.6;">
-                </div>
-                <h3 style="margin: 0;">حساب ببجي ليفل 70</h3>
-                <p style="font-size: 13px; color: #aaa; margin: 10px 0;">مشحون 8 مواسم - سكنات مثك - إم فور ثلجي</p>
-                <span class="price-tag">400 د.ل</span>
-                <button class="btn-buy" onclick="buyAccount('#1001', 'ببجي ليفل 70')">شراء الحساب 🛒</button>
-            </div>
-
-            <div class="card">
-                <div class="acc-id-badge">ID: #1002</div>
-                <div style="background: #1a1f2e; height: 160px; border-radius: 10px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
-                    <img src="https://img.icons8.com/fluency/96/fire-element.png" style="width: 60px; opacity: 0.6;">
-                </div>
-                <h3 style="margin: 0;">حساب فري فاير نادر</h3>
-                <p style="font-size: 13px; color: #aaa; margin: 10px 0;">أقنعة قديمة - رقصات نادرة - أرنب</p>
-                <span class="price-tag">280 د.ل</span>
-                <button class="btn-buy" onclick="buyAccount('#1002', 'فري فاير نادر')">شراء الحساب 🛒</button>
-            </div>
+            <div class="card"><span>60 UC</span> <span class="price-tag">13 د.ل</span> <button class="btn-buy" onclick="sendOrder('ببجي', '60 شدة', '13')">شحن سريع ⚡</button></div>
+            <div class="card"><span>325 UC</span> <span class="price-tag">64 د.ل</span> <button class="btn-buy" onclick="sendOrder('ببجي', '325 شدة', '64')">شحن سريع ⚡</button></div>
+            <div class="card"><span>660 UC</span> <span class="price-tag">125 د.ل</span> <button class="btn-buy" onclick="sendOrder('ببجي', '660 شدة', '125')">شحن سريع ⚡</button></div>
+            <div class="card"><span>1800 UC</span> <span class="price-tag">315 د.ل</span> <button class="btn-buy" onclick="sendOrder('ببجي', '1800 شدة', '315')">شحن سريع ⚡</button></div>
         </div>
     </div>
 
     <div id="payment" class="section">
-        <h2>طرق الدفع المتاحة 💳</h2>
-        <div class="payment-methods">
-            <div class="pay-card">💵<br>تحويل محلي</div>
-            <div class="pay-card">🅿️<br>PayPal</div>
-            <div class="pay-card">🔗<br>USDT</div>
-            <div class="pay-card">📱<br>سداد / تداول</div>
+        <h2>طرق الدفع 💳</h2>
+        <div class="grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="card">🏦 تحويل محلي</div>
+            <div class="card">💳 سداد / تداول</div>
+            <div class="card">🅿️ PayPal</div>
+            <div class="card">🔗 USDT</div>
         </div>
-        <p style="text-align: center; margin-top: 20px; color: #888;">يرجى التواصل لتأكيد الدفع وإرسال الإيصال.</p>
     </div>
-
 </div>
 
-<a href="https://wa.me/218934551020" class="wa-float">
-    <img src="https://img.icons8.com/color/48/whatsapp.png" alt="whatsapp">
-</a>
+<a href="https://wa.me/218934551020" class="wa-float"><img src="https://img.icons8.com/color/48/whatsapp.png"></a>
 
 <script>
     function openTab(evt, tabName) {
@@ -234,34 +82,13 @@
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
-
     function sendOrder(game, item, price) {
         const id = prompt("أدخل رقم الـ ID الخاص بك:");
         if (id) {
-            const msg = `طلب جديد من متجر ليجند:\nالخدمة: ${game}\nالمنتج: ${item}\nالسعر: ${price} د.ل\nالآيدي: ${id}`;
+            const msg = `طلب جديد من KARLO STORE 📢:\nالخدمة: ${game}\nالمنتج: ${item}\nالسعر: ${price} د.ل\nالآيدي: ${id}`;
             window.location.href = `https://wa.me/218934551020?text=${encodeURIComponent(msg)}`;
         }
     }
-
-    // وظيفة إرسال بيانات البائع للأدمن
-    function submitAccount() {
-        const game = document.getElementById('accGame').value;
-        const level = document.getElementById('accLevel').value;
-        const price = document.getElementById('accPrice').value;
-        const details = document.getElementById('accDetails').value;
-
-        if(!game || !price) { alert("من فضلك املأ البيانات الأساسية"); return; }
-
-        const msg = `أريد عرض حسابي للبيع 📢:\n🎮 اللعبة: ${game}\n📈 ليفل: ${level}\n💰 السعر: ${price}\n📝 وصف: ${details}`;
-        window.location.href = `https://wa.me/218934551020?text=${encodeURIComponent(msg)}`;
-    }
-
-    // وظيفة طلب شراء حساب معروض
-    function buyAccount(id, name) {
-        const msg = `السلام عليكم، أريد شراء هذا الحساب من الموقع:\n🆔 رقم الحساب: ${id}\n🔖 الاسم: ${name}`;
-        window.location.href = `https://wa.me/218934551020?text=${encodeURIComponent(msg)}`;
-    }
 </script>
-
 </body>
 </html>
